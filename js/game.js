@@ -63,14 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
             this.draw();
         }
     }
+    function detectUFOCollision(ufo1, ufo2) {
+        return (
+            ufo1.position.x < ufo2.position.x + ufo2.width &&
+            ufo1.position.x + ufo1.width > ufo2.position.x &&
+            ufo1.position.y < ufo2.position.y + ufo2.height &&
+            ufo1.position.y + ufo1.height > ufo2.position.y
+        );
+    } 
 
     class EnemyProjectile {
         constructor(x, y) {
             this.position = { x: x, y: y };
             this.velocity = { x: 5, y: 0 };
-            this.width = 75;
-            this.height = 75;
-            this.range = 100;
+            this.width = 65;
+            this.height = 65;
+            this.range = 170;
             this.destroyed = false;
             this.initialX = this.position.x;
             this.image = new Image();
@@ -86,6 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
         update() {
             if (!this.destroyed) {
                 this.position.x += this.velocity.x;
+
+                if (this.position.x <= 0 || this.position.x + this.width >= canvas.width) {
+                    this.velocity.x = -this.velocity.x;
+                }
+
                 if (this.position.x > this.initialX + this.range || this.position.x < this.initialX - this.range) {
                     this.velocity.x = -this.velocity.x;
                 }
@@ -106,11 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
     timerDisplay.textContent = remainingTime;
 
     function spawnUFO() {
-        const ufoX = Math.random() * (canvas.width - 20);
-        const ufoY = 100 + Math.random() * 100;
+        const borderOffset = 100; 
+        const ufoX = borderOffset + Math.random() * (canvas.width - 2 * borderOffset);
+        const ufoY = 100 + Math.random() * (canvas.height / 2 - borderOffset);
         const ufo = new EnemyProjectile(ufoX, ufoY);
         enemyProjectiles.push(ufo);
     }
+    
 
     const timerInterval = setInterval(() => {
         remainingTime -= 1;
@@ -187,13 +202,22 @@ document.addEventListener('DOMContentLoaded', () => {
         c.clearRect(0, 0, canvas.width, canvas.height);
         player.update();
         enemyProjectiles = enemyProjectiles.filter(enemy => !enemy.destroyed);
-
+    
         while (enemyProjectiles.length < ufoCount) {
             spawnUFO();
         }
     
         enemyProjectiles.forEach((enemy, enemyIndex) => {
             enemy.update();
+
+            for (let i = 0; i < enemyProjectiles.length; i++) {
+                const otherUFO = enemyProjectiles[i];
+                if (enemy !== otherUFO && detectUFOCollision(enemy, otherUFO)) {
+                    enemy.velocity.x = -enemy.velocity.x;
+                    otherUFO.velocity.x = -otherUFO.velocity.x;
+                }
+            }
+
             projectiles.forEach((projectile, projectileIndex) => {
                 projectile.update();
     
@@ -206,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-    
+
         projectiles.forEach((projectile, index) => {
             if (projectile.position.y + projectile.height < 0) {
                 projectiles.splice(index, 1);
