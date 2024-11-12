@@ -4,19 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const pointsDisplay = document.querySelector('#pointsDisplay');
     const canvas = document.querySelector('#gameCanvas');
     const c = canvas.getContext('2d');
+    //music that plays over the game
     const music = new Audio();
     music.src = 'sounds/gameplay.mp3';
     music.play();
+    //the points of the playe character
     let points = 0;
     let canFire = true;
     let canMove = true;
-
+    //If the player hasn't chosen any values we go with the default
     const ufoCount = parseInt(localStorage.getItem('ufoCount')) || 1;
     const gameTime = parseInt(localStorage.getItem('gameTime')) || 60;
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
+    //Player representation
     class Player {
         constructor() {
             this.position = { x: canvas.width / 2 - 50, y: canvas.height - 120 };
@@ -41,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.draw();
         }
     }
-
+    //Missile representation
     class Projectile {
         constructor(x, y) {
             this.position = { x: x, y: y };
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ufo1.position.y + ufo1.height > ufo2.position.y
         );
     } 
-
+    //UFO representation
     class EnemyProjectile {
         constructor(x, y) {
             this.position = { x: x, y: y };
@@ -111,13 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
             destroyObject(this);
         }
     }
-
+       
     const player = new Player();
     const projectiles = [];
     let enemyProjectiles = [];
     let remainingTime = gameTime;
     timerDisplay.textContent = remainingTime;
-
+    //We spawn ufo's using Math.random
     function spawnUFO() {
         const borderOffset = 100; 
         const ufoX = borderOffset + Math.random() * (canvas.width - 2 * borderOffset);
@@ -179,8 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
         finalScore = Math.max(0, finalScore - substractPoint);
         pointsDisplay.textContent = finalScore;
         alert(`Game Over! Your final score is: ${finalScore}. You'll be redirected to the homepage where you can start again.`);
-        window.location.href = 'homepage.html';
+        setTimeout(() => {
+            window.location.href = 'homepage.html';
+        }, 2000); 
     }
+    
 
     function destroyObject(object) {
         let { x, y } = object.position;
