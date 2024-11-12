@@ -15,12 +15,6 @@ h2 {
     font-weight: bold;
 }
 
-button {
-    background-color: #007bff;
-    border: none;
-    font-size: 1.2em;
-}
-
 button:hover {
     background-color: #0056b3;
 }

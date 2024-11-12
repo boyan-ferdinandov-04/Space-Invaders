@@ -9,13 +9,10 @@ input[type=text], input[type=password] {
   padding: 10px; 
   margin: 3px 0 15px 0; 
   display: inline-block;
-  border: 1px solid #ccc; 
-  background: #f1f1f1;
   font-size: 14px; 
 }
 
 .registerbtn {
-  color: white;
   padding: 12px 20px;
   margin: 6px 0;
   border: none;
@@ -30,7 +27,6 @@ input[type=text], input[type=password] {
 }
 
 .signin {
-  background-color: #f1f1f1;
   text-align: center;
   padding: 10px; 
   font-size: 14px; 
