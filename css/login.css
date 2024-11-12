@@ -1,0 +1,61 @@
+
+
+.container {
+    padding: 8px; /* Reduced padding for a more compact form */
+    max-width: 400px; /* Optional: Set a max width to control form size */
+    margin: auto; /* Center the form horizontally */
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px; /* Reduced padding inside input fields */
+    margin: 4px 0 15px 0; /* Reduced margin for a tighter layout */
+    display: inline-block;
+    border: 1px solid #ccc; /* Added subtle border for better visibility */
+    background: #f1f1f1;
+    font-size: 14px; /* Slightly smaller font size */
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 20px; /* Reduced margin for a more compact look */
+}
+
+.registerbtn {
+    color: white;
+    padding: 12px 18px; /* Reduced padding for smaller button */
+    margin: 6px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 16px; /* Smaller button font size */
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+a {
+    color: dodgerblue;
+    font-size: 14px; /* Smaller font size for links */
+}
+
+.signin {
+    text-align: center;
+    padding: 10px; /* Reduced padding for "Already have an account?" section */
+    font-size: 14px; /* Smaller font size */
+}
+
+h1 {
+    font-size: 24px; /* Smaller heading */
+}
+
+p {
+    font-size: 14px; /* Smaller paragraph text */
+}

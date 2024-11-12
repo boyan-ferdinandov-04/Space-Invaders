@@ -1,0 +1,45 @@
+.container {
+  padding: 8px; /* Reduce padding for the form container */
+  max-width: 400px; /* Set a max width for the form */
+  margin: auto; /* Center the form on the page */
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 10px; 
+  margin: 3px 0 15px 0; 
+  display: inline-block;
+  border: 1px solid #ccc; 
+  background: #f1f1f1;
+  font-size: 14px; 
+}
+
+.registerbtn {
+  color: white;
+  padding: 12px 20px; /* Reduce padding for the button */
+  margin: 6px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 16px; /* Smaller button font size */
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px; /* Reduce padding in the "Already have an account?" section */
+  font-size: 14px; /* Smaller font size */
+}
+
+h1 {
+  font-size: 24px; /* Smaller heading */
+}
+
+p {
+  font-size: 14px; /* Smaller paragraph text */
+}

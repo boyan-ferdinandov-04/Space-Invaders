@@ -1,0 +1,13 @@
+body {
+    background-color: #f0a500;
+}
+.container {
+    background-color: #ffdd99;
+    border: 2px solid blue;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 8px;
+}
+.table {
+    background-color: white;
+}

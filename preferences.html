@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders - Preferences</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="css/play.css">
+    
+</head>
+<body class="bg-secondary">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a href="homepage.html" class="navbar-brand d-flex align-items-center no-underline">
+                    <img src="img/Universidad_Politécnica_de_Madrid_(logo).png" alt="University Logo" class="logo me-2">
+                    <span class="title text-white">U.P.M. / Space Invaders</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a href="homepage.html" class="nav-link active text-white">Home <i class="bi bi-house"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="preferences.html" class="nav-link text-white">Preferences <i class="bi bi-sliders"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="play.html" class="nav-link text-white">Play <i class="bi bi-play-fill"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="records.html" class="nav-link text-white">Records <i class="bi bi-clipboard-fill"></i></a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <a href="register.html" class="nav-link text-white me-3">Register <i class="bi bi-person-circle"></i></a>
+                        <a href="login.html" class="nav-link text-white">Login <i class="bi bi-box-arrow-in-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="d-flex">
+            <div class="preferences-card bg-warning p-4 rounded shadow-lg me-3">
+                <div class="text-center mb-3">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6maky0wuAu1_r0BTZWpUdPAZpdmfQpvIe2Q&s" alt="University Logo" class="logo mb-2">
+                    <h2 class="text-primary">Preferences</h2>
+                </div>
+                <form id="preferences-form">
+                    <div class="mb-3">
+                        <label for="ufo" class="form-label"><strong>Number of UFOs:</strong></label>
+                        <input type="number" id="ufo" class="form-control" min="1" max="5" value="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label"><strong>Time (seconds):</strong></label>
+                        <input type="number" id="time" class="form-control" min="60" max="180" step="60" value="60">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Accept</button>
+                </form>
+            </div>
+
+            <div class="rules-panel bg-secondary p-3 rounded shadow-lg" style="width: 500px;">
+                <h5 class="text-primary text-center">Rules</h5>
+                <ul class="mb-0">
+                    <li>Every hit ufo gives 100 points</li>
+                    <li>Every missed shot subtracts 25 points from the total score</li>
+                    <li>Final Score Formula:</li>
+                    <li>*Final Score = Score / (gameTime / 60)</li>
+                    <li>After that:</li>
+                    <li>*Final Score = Score - (50 * (number of ufos - 1))</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/preferences.js"></script>
+</body>
+</html>
