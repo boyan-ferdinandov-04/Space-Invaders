@@ -5,3 +5,4 @@ The ufo's keep respawning up to the number we have selected in order to make the
 We have collision between the ufo's
 The records page displays the score and personal settings of all other users using the api provided in the task.
 
+My final grade was 95%.
